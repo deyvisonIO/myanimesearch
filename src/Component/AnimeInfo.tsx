@@ -1,7 +1,92 @@
+interface Props<Type> {
+  anime: Type,
+}
 
-export function AnimeInfo({anime}:any) {  
+interface Anime {
+  aired: {
+    from: string,
+    to: string,
+    string: string,
+    prop: {
+      from: AnimeDate,
+      to: AnimeDate, 
+    }
+  }
+  airing: boolean,
+  approved: boolean,
+  broadcast: BroadcastTime,
+  demographics: AnimeItem[],
+  duration: string,
+  episodes: number,
+  eplicit_genres: string[],
+  favorites: number,
+  genres: AnimeItem[],
+  images: {
+    jpg: AnimeImage,
+    webp: AnimeImage,
+  },
+  licensors: AnimeItem[],
+  mal_id: number,
+  members: number,
+  popularity: number,
+  producers: AnimeItem[],
+  rank: number,
+  rating: string,
+  score: number,
+  season: string,
+  source: string,
+  status: string,
+  studios: AnimeItem[],
+  synopsis: string,
+  themes: string[],
+  title: string,
+  title_english: string,
+  title_japanese: string,
+  title_synonyms: string[],
+  titles: AnimeTitle[],
+  trailer: any,
+  type: string,
+  url: string,
+  year: number,
+}
+
+interface AnimeItem {
+  mal_id: number,
+  name: string,
+  type: string,
+  url: string,
+}
+
+interface AnimeTitle {
+  title: string,
+  type: string,
+}
+
+interface AnimeImage {
+  image_url: string,
+  large_image_url: string,
+  small_image_url: string,
+}
+
+interface BroadcastTime {
+  day: number,
+  string: string,
+  time: string,
+  timezone: string,
+}
+
+interface AnimeDate {
+  day: number,
+  month: number,
+  year: number,
+}
+
+export function AnimeInfo({anime}:Props<Anime>) {  
   const isAnimeNotEmpty = Object.keys(anime).length > 0;
-
+  
+  if(!anime) {
+   console.log(anime);
+  }
   if (!isAnimeNotEmpty) {
     return null;
   }
@@ -29,7 +114,9 @@ export function AnimeInfo({anime}:any) {
         </div>
       </div>
 
-      <a  href={anime.url} target="_blank" ><img className="animeImage" src={anime.images.webp.large_image_url} alt="" /> </a>
+      <a  href={anime.url} target="_blank" className="animeUrl">
+        <img className="animeImage" src={anime.images.webp.large_image_url} alt="" />
+      </a>
     </div>
   )
 }

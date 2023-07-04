@@ -56,10 +56,12 @@
   margin: 0;
   padding: 0;
   color:#888888b9;
+  max-height: 100px;
 }
 
 .animeTitle {
   margin-bottom: 0;
+  max-height: 100px;
 }
 
 .animeSynopsis {
@@ -73,11 +75,17 @@
   gap: 1rem;
 }
 
-.animeImage {
-  max-height: 500px;
-  height: 500px;
-  max-width: 600px;
+.animeUrl {
+  min-height: 500px;
+  min-width: 400px;
 }
+
+.animeImage {
+  min-height: 200px;
+  max-height: 500px;
+  max-width: 400px;
+}
+
 
 #randomizeButton:disabled {
   opacity: 50%;
