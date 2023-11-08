@@ -22,7 +22,6 @@ function App() {
           safe = true
         }
       }
-
       if (Object.keys(data).length > 0) {
         addAnime(data);
       }
