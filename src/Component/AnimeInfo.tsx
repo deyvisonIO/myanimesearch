@@ -3,51 +3,51 @@ interface Props<Type> {
 }
 
 interface Anime {
-  aired: {
-    from: string,
-    to: string,
-    string: string,
-    prop: {
+  aired?: {
+    from?: string,
+    to?: string,
+    string?: string,
+    prop?: {
       from: AnimeDate,
       to: AnimeDate, 
     }
   }
-  airing: boolean,
-  approved: boolean,
-  broadcast: BroadcastTime,
-  demographics: AnimeItem[],
-  duration: string,
-  episodes: number,
-  eplicit_genres: string[],
-  favorites: number,
-  genres: AnimeItem[],
-  images: {
+  airing?: boolean,
+  approved?: boolean,
+  broadcast?: BroadcastTime,
+  demographics?: AnimeItem[],
+  duration?: string,
+  episodes?: number,
+  eplicit_genres?: string[],
+  favorites?: number,
+  genres?: AnimeItem[],
+  images?: {
     jpg: AnimeImage,
     webp: AnimeImage,
   },
-  licensors: AnimeItem[],
-  mal_id: number,
-  members: number,
-  popularity: number,
-  producers: AnimeItem[],
-  rank: number,
-  rating: string,
-  score: number,
-  season: string,
-  source: string,
-  status: string,
-  studios: AnimeItem[],
-  synopsis: string,
-  themes: string[],
-  title: string,
-  title_english: string,
-  title_japanese: string,
-  title_synonyms: string[],
-  titles: AnimeTitle[],
-  trailer: any,
-  type: string,
-  url: string,
-  year: number,
+  licensors?: AnimeItem[],
+  mal_id?: number,
+  members?: number,
+  popularity?: number,
+  producers?: AnimeItem[],
+  rank?: number,
+  rating?: string,
+  score?: number,
+  season?: string,
+  source?: string,
+  status?: string,
+  studios?: AnimeItem[],
+  synopsis?: string,
+  themes?: string[],
+  title?: string,
+  title_english?: string,
+  title_japanese?: string,
+  title_synonyms?: string[],
+  titles?: AnimeTitle[],
+  trailer?: any,
+  type?: string,
+  url?: string,
+  year?: number,
 }
 
 interface AnimeItem {
@@ -102,7 +102,6 @@ export function AnimeInfo({anime}:Props<Anime>) {
           <div className="animeSynopsis">
             <p>{anime.synopsis}</p>
           </div>
-          
         </div>
         <div className="animeClassification">
           <p>Rating: {anime.rating}</p>

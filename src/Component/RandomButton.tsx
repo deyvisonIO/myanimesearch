@@ -1,25 +1,22 @@
-import { useRef, useState } from "react";
+import { useState } from "react";
 
 interface randomizeProps {
-  randomize: () => Promise<void>;
+  getRandomAnime: () => Promise<void>;
 }
 
 
-export function RandomButton({ randomize }:randomizeProps) {
-
+export function RandomButton({ getRandomAnime }:randomizeProps) {
   const [disable, setDisable] = useState<boolean>(false);
 
   function disableButton() {
     setDisable(true);
-
     setTimeout(() => setDisable(false), 1000);
-
   } 
 
   return (
     <div>
       <button id="randomizeButton" onClick={() => {
-        randomize();
+        getRandomAnime(); 
         disableButton();
         }} disabled={disable} >Random</button>
     </div>
