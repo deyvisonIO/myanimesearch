@@ -1,3 +1,5 @@
+import { Label } from "../utils/Label";
+
 interface Props<Type> {
   anime: Type,
 }
@@ -94,27 +96,38 @@ export function AnimeInfo({anime}:Props<Anime>) {
   console.log(anime);
 
   return (
-    <div className="animeCard">
-      <div className="animeText">
-        <div>
-          <h1 className="animeTitle">{anime.title}</h1>
-          <h3 className="animeSubtitle">{anime.title_japanese}</h3>
-          <div className="animeSynopsis">
-            <p>{anime.synopsis}</p>
-          </div>
+    <div className="flex flex-col items-center gap-2">
+      <div className="">
+        <div className="font-mono">
+          <p>{anime.synopsis}</p>
         </div>
-        <div className="animeClassification">
-          <p>Rating: {anime.rating}</p>
-          <p>Type: {anime.type}</p>
-          <p>Status: {anime.status}</p>
-          <p>Score: {anime.score}</p>
-          <p>Source: {anime.source}</p>
-          <p>Episodes: {anime.episodes} </p>
+        <div className="flex gap-2 justify-center">
+          <Label className="text-white bg-red-500">
+            {anime.rating}
+          </Label>
+          <Label className="text-white bg-red-500">
+            {anime.type}
+          </Label>
+          <Label className="text-white bg-red-500">
+            {anime.status}
+          </Label>
+          <Label className="text-white bg-red-500">
+            {anime.score === null ? "0.00" : anime.score}
+          </Label>
+          <Label className="text-white bg-red-500">
+            {anime.source}
+          </Label>
+          <Label className=" text-white bg-red-500">
+            {anime.episodes}
+          </Label>
         </div>
       </div>
-
-      <a  href={anime.url} target="_blank" className="animeUrl">
-        <img className="animeImage" src={anime.images.webp.large_image_url} alt="" />
+      <a  href={anime.url} target="_blank" className="relative">
+        <img className="z-0" src={anime.images.webp.large_image_url} alt="" />
+        <div className="absolute bottom-0 w-full p-4 text-xl bg-black bg-opacity-75 text-white font-bold">
+          <h1 className="text-xl text-extrabold">{anime.title}</h1>
+          <h3 className="animeSubtitle">{anime.title_japanese}</h3>
+        </div>
       </a>
     </div>
   )

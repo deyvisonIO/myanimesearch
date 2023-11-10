@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Button } from "../utils/Button";
 
 interface randomizeProps {
   getRandomAnime: () => Promise<void>;
@@ -10,15 +11,15 @@ export function RandomButton({ getRandomAnime }:randomizeProps) {
 
   function disableButton() {
     setDisable(true);
-    setTimeout(() => setDisable(false), 1000);
+    setTimeout(() => setDisable(false), 2000);
   } 
 
   return (
-    <div>
-      <button id="randomizeButton" onClick={() => {
+    <Button id="randomizeButton" className="w-auto my-2" onClick={() => {
         getRandomAnime(); 
         disableButton();
-        }} disabled={disable} >Random</button>
-    </div>
+        }} disabled={disable} >
+        Random
+    </Button>
   )
 }

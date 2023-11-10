@@ -1,6 +1,5 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { RandomButton } from './Component/RandomButton';
-import './App.css'
 import { AnimeInfo } from './Component/AnimeInfo';
 
 function App() {
@@ -9,6 +8,10 @@ function App() {
   function addAnime(data:any): void {
       setAnime(() => data);
   }  
+
+  useEffect(() => {
+    getRandomAnime();
+  }, [])
 
 
   async function getRandomAnime(): Promise<void> {
