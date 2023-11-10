@@ -123,7 +123,7 @@ export function AnimeInfo({anime}:Props<Anime>) {
         </div>
       </div>
       <a  href={anime.url} target="_blank" className="relative">
-        <img className="z-0" src={anime.images.webp.large_image_url} alt="" />
+        <img className="z-0" src={anime.images?.webp.large_image_url || ""} alt="" />
         <div className="absolute bottom-0 w-full p-4 text-xl bg-black bg-opacity-75 text-white font-bold">
           <h1 className="text-xl text-extrabold">{anime.title}</h1>
           <h3 className="animeSubtitle">{anime.title_japanese}</h3>
