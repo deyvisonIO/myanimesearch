@@ -1,6 +1,7 @@
-import { useEffect, useState } from 'react'
+import { Suspense, useEffect, useState } from 'react'
 import { RandomButton } from './Component/RandomButton';
 import { AnimeInfo } from './Component/AnimeInfo';
+import { Loading } from './utils/Loading';
 
 function App() {
   const [anime, setAnime] = useState({});
@@ -28,7 +29,6 @@ function App() {
       if (Object.keys(data).length > 0) {
         addAnime(data);
       }
-
     } catch (e: unknown) {
       console.log(e);
     }
@@ -41,8 +41,10 @@ function App() {
   }
 
   return (
-    <div>
-      <AnimeInfo anime={anime} />
+    <div className="rounded p-2 bg-white">
+      <Suspense fallback={<Loading />}>
+        <AnimeInfo anime={anime} />
+      </Suspense>
       <RandomButton getRandomAnime={getRandomAnime} />
     </div>
   )

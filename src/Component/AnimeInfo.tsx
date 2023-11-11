@@ -96,39 +96,31 @@ export function AnimeInfo({anime}:Props<Anime>) {
   console.log(anime);
 
   return (
-    <div className="flex flex-col items-center gap-2">
-      <div className="">
-        <div className="font-mono">
-          <p>{anime.synopsis}</p>
-        </div>
-        <div className="flex gap-2 justify-center">
-          <Label className="text-white bg-red-500">
-            {anime.rating}
-          </Label>
-          <Label className="text-white bg-red-500">
-            {anime.type}
-          </Label>
-          <Label className="text-white bg-red-500">
-            {anime.status}
-          </Label>
-          <Label className="text-white bg-red-500">
-            {anime.score === null ? "0.00" : anime.score}
-          </Label>
-          <Label className="text-white bg-red-500">
-            {anime.source}
-          </Label>
-          <Label className=" text-white bg-red-500">
-            {anime.episodes}
-          </Label>
-        </div>
-      </div>
-      <a  href={anime.url} target="_blank" className="relative">
-        <img className="z-0" src={anime.images?.webp.large_image_url || ""} alt="" />
+    <div className="flex flex-col items-center gap-2 h-[800px]">
+      <a  href={anime.url} target="_blank" className="relative h-[600px]">
+        <img className="z-0 h-full" src={anime.images?.webp.large_image_url || ""} alt="" />
         <div className="absolute bottom-0 w-full p-4 text-xl bg-black bg-opacity-75 text-white font-bold">
           <h1 className="text-xl text-extrabold">{anime.title}</h1>
-          <h3 className="animeSubtitle">{anime.title_japanese}</h3>
+          <h3 className="text-lg">{anime.title_japanese}</h3>
+          <h3 className="text-sm mix-blend-difference">{anime?.type || "unknown"} - {anime?.rating?.split(" ")[0]}</h3> 
         </div>
       </a>
+      <div className="text-zinc-800">
+        <div className="flex gap-2 justify-center">
+          <Label className="text-white bg-red-900">
+            {anime.status}
+          </Label>
+          <div className="text-center ">
+            Rating: <span className="font-bold">{anime.score === null ? "0.00" : anime.score}</span>
+          </div>
+          <div>
+            Episodes: <b>{anime.episodes}</b>
+          </div>
+        </div>
+        <div className="h-40 align-middle text-justify px-3 text-zinc-700 font-overpass overflow-y-scroll">
+          {anime.synopsis}
+        </div>
+      </div>
     </div>
   )
 }
