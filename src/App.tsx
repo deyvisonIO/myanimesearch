@@ -56,7 +56,7 @@ function App() {
   }
 
   return (
-    <div className="rounded-2xl p-4 h-[100vh] md:h-[700px] flex flex-col justify-center items-stretch bg-white">
+    <div className="rounded-2xl p-4 h-full md:h-[700px] flex flex-col justify-center items-stretch bg-white">
       <Suspense fallback={<Loading />}>
         <AnimeInfo anime={anime} isPending={isPending} />
       </Suspense>
