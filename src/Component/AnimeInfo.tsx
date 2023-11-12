@@ -2,6 +2,7 @@ import { Label } from "../utils/Label";
 
 interface Props<Type> {
   anime: Type,
+  isPending: boolean,
 }
 
 interface Anime {
@@ -83,29 +84,28 @@ interface AnimeDate {
   year: number,
 }
 
-export function AnimeInfo({anime}:Props<Anime>) {  
+export function AnimeInfo({anime, isPending}:Props<Anime>) {  
   const isAnimeNotEmpty = Object.keys(anime).length > 0;
+  const opacity = isPending ? 'opacity-0': '';
   
   if(!anime) {
    console.log(anime);
   }
   if (!isAnimeNotEmpty) {
-    return null;
+    return <div className={`flex flex-col items-center gap-2 h-[800px] transition-opacity ${opacity}`}></div>
   }
   
-  console.log(anime);
-
   return (
-    <div className="flex flex-col items-center gap-2 h-[800px]">
-      <a  href={anime.url} target="_blank" className="relative h-[600px]">
-        <img className="z-0 h-full" src={anime.images?.webp.large_image_url || ""} alt="" />
+    <div className={`flex flex-col md:flex-row md:items-stretch gap-2 md:h-[600px] items-center transition-opacity  ${opacity}`}>
+      <a  href={anime.url} target="_blank" className="relative md:h-[600px] w-[400px] shrink-0">
+        <img className="z-0 h-full w-full" src={anime.images?.webp.large_image_url || ""} alt="" />
         <div className="absolute bottom-0 w-full p-4 text-xl bg-black bg-opacity-75 text-white font-bold">
           <h1 className="text-xl text-extrabold">{anime.title}</h1>
           <h3 className="text-lg">{anime.title_japanese}</h3>
           <h3 className="text-sm mix-blend-difference">{anime?.type || "unknown"} - {anime?.rating?.split(" ")[0]}</h3> 
         </div>
       </a>
-      <div className="text-zinc-800">
+      <div className="text-zinc-800 w-full">
         <div className="flex gap-2 justify-center">
           <Label className="text-white bg-red-900">
             {anime.status}
@@ -117,7 +117,7 @@ export function AnimeInfo({anime}:Props<Anime>) {
             Episodes: <b>{anime.episodes}</b>
           </div>
         </div>
-        <div className="h-40 align-middle text-justify px-3 text-zinc-700 font-overpass overflow-y-scroll">
+        <div className="h-40 md:h-full align-middle text-justify px-3 text-zinc-700 font-overpass overflow-y-scroll">
           {anime.synopsis}
         </div>
       </div>

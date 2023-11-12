@@ -2,17 +2,20 @@ import { useState } from "react";
 import { Button } from "../utils/Button";
 
 interface randomizeProps {
-  getRandomAnime: () => Promise<void>;
+  getRandomAnime: (signal: AbortSignal) => Promise<void>;
 }
 
 
 export function RandomButton({ getRandomAnime }:randomizeProps) {
   const [disable, setDisable] = useState<boolean>(false);
+  const controller = new AbortController();
+  const signal = controller.signal;
 
   return (
-    <Button id="randomizeButton" className="w-auto my-2" onClick={() => {
+    <Button id="randomizeButton" className="w-full my-2" onClick={() => {
         setDisable(true);
-        getRandomAnime().then(() => setDisable(false)); 
+        getRandomAnime(signal).then(() => setDisable(false));
+        return () => { controller.abort() }
         }} disabled={disable} >
         Random
     </Button>
