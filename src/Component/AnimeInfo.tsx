@@ -97,7 +97,7 @@ export function AnimeInfo({anime, isPending}:Props<Anime>) {
   
   return (
     <div className={`flex flex-col md:flex-row md:items-stretch gap-2 md:h-[600px] items-center transition-opacity  ${opacity}`}>
-      <a  href={anime.url} target="_blank" className="relative md:h-[600px] w-[400px] shrink-0">
+      <a  href={anime.url} target="_blank" className="relative h-[600px] md:w-[400px] shrink-0">
         <img className="z-0 h-full w-full" src={anime.images?.webp.large_image_url || ""} alt="" />
         <div className="absolute bottom-0 w-full p-4 text-xl bg-black bg-opacity-75 text-white font-bold">
           <h1 className="text-xl text-extrabold">{anime.title}</h1>
